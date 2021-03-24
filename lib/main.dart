@@ -1,7 +1,8 @@
+import 'package:first_intro_class/calculator.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyName());
+  runApp(Calculator());
 }
 
 class MyName extends StatefulWidget {
