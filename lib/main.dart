@@ -1,4 +1,4 @@
-import 'package:first_intro_class/login.dart';
+import 'package:first_intro_class/products.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
+      home: ProductScreen(),
     );
   }
 }
