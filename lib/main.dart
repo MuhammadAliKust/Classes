@@ -1,8 +1,17 @@
-import 'package:first_intro_class/calculator.dart';
+import 'package:first_intro_class/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Calculator());
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: LoginScreen(),
+    );
+  }
 }
 
 class MyName extends StatefulWidget {
