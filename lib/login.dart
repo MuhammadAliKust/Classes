@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _pwdController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +42,7 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               child: TextField(
+                controller: _emailController,
                 decoration: InputDecoration(
                     labelText: "Email ID",
                     border: OutlineInputBorder(
@@ -49,6 +53,7 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               child: TextField(
                 obscureText: true,
+                controller: _pwdController,
                 decoration: InputDecoration(
                     labelText: "Password",
                     border: OutlineInputBorder(
@@ -65,12 +70,16 @@ class LoginScreen extends StatelessWidget {
               height: 10,
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: _emailController.text,
+                    password: _pwdController.text);
+              },
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 58.0, vertical: 10),
                 child: Text(
-                  "LOGIN",
+                  "Register",
                   style: TextStyle(color: Colors.white),
                 ),
               ),

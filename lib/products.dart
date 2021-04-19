@@ -30,64 +30,70 @@ class ProductScreen extends StatelessWidget {
                 onPressed: () {}),
           ],
         ),
-        body: GridView.builder(
-            itemCount: 10,
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
-            ),
-            itemBuilder: (context, i) {
-              return Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.grey[300])),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [Icon(Icons.more_vert_outlined)],
-                    ),
-                    Container(
+        body: Column(
+          children: [
+            Container(
+              height: 200,
+              child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, i) {
+                    return Container(
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey[350],
-                      ),
-                      child: Image.asset(
-                        'assets/images/belt.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          border: Border.all(color: Colors.grey[300])),
+                      child: Column(
                         children: [
-                          Column(
-                            children: [
-                              Text("Brown Belt"),
-                              SmoothStarRating(
-                                  allowHalfRating: false,
-                                  onRated: (v) {},
-                                  starCount: 5,
-                                  rating: 5,
-                                  size: 15.0,
-                                  isReadOnly: true,
-                                  color: Colors.yellow,
-                                  borderColor: Colors.yellow,
-                                  spacing: 0.0)
-                            ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [Icon(Icons.more_vert_outlined)],
                           ),
-                          Text(
-                            "\$12",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.grey[350],
+                            ),
+                            child: Image.asset(
+                              'assets/images/belt.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text("Brown Belt"),
+                                    SmoothStarRating(
+                                        allowHalfRating: false,
+                                        onRated: (v) {},
+                                        starCount: 5,
+                                        rating: 5,
+                                        size: 15.0,
+                                        isReadOnly: true,
+                                        color: Colors.yellow,
+                                        borderColor: Colors.yellow,
+                                        spacing: 0.0)
+                                  ],
+                                ),
+                                Text(
+                                  "\$12",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),
-                    )
-                  ],
-                ),
-              );
-            }));
+                    );
+                  }),
+            ),
+          ],
+        ));
   }
 }
