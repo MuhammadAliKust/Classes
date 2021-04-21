@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_intro_class/dashBoard.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
@@ -229,27 +230,9 @@ class _LoginScreenState extends State<LoginScreen> {
               email: _emailController.text, password: _pwdController.text)
           .whenComplete(() => makeLoadingFalse())
           .then((value) {
-        return showDialog<void>(
-          context: context,
-          barrierDismissible: false,
-          // false = user must tap button, true = tap outside dialog
-          builder: (BuildContext dialogContext) {
-            return AlertDialog(
-              title: Text('Message!'),
-              content: Text("LoggedIn successfully"),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('Okay'),
-                  onPressed: () {
-                    Navigator.of(dialogContext).pop(); // Dismiss alert dialog
-                  },
-                ),
-              ],
-            );
-          },
-        );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
       });
-      ;
     } on FirebaseAuthException catch (e) {
       makeLoadingFalse();
       return showDialog<void>(
