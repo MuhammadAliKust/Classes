@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:first_intro_class/helper.dart';
 import 'package:flutter/material.dart';
 
 class DisplayProducts extends StatefulWidget {
@@ -14,7 +13,6 @@ class _DisplayProductsState extends State<DisplayProducts> {
   getProducts() {
     FirebaseFirestore.instance
         .collection('productData')
-        .where('uid', isEqualTo: getUserID())
         .get()
         .then((value) => value.docs.map((product) {
               myProducts.add(product);
@@ -39,8 +37,12 @@ class _DisplayProductsState extends State<DisplayProducts> {
           : ListView.builder(
               itemCount: myProducts.length,
               itemBuilder: (context, i) {
+                print(myProducts[i].data()['imgUrl']);
                 return Card(
                   child: ListTile(
+                    leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            myProducts[i].data()['productImageUrl'] ?? "")),
                     isThreeLine: true,
                     title: Text(myProducts[i].data()['productName']),
                     subtitle: Column(
